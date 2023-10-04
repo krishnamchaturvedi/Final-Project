@@ -1,0 +1,24 @@
+#!/bin/bash
+PROTOCOL="ftp"
+URL="b2b.fadv.com" 
+LOCALDIR="C:\Users\Krishnam\Downloads"
+REMOTEDIR="/optexpva/va_fs/FADVDump/Test/krishnam/test.pdf"
+USER="rpacoefiles"
+PASS="QuwGDA3p8x"
+REGEX=".pdf"
+LOG="C:\Users\Krishnam\Downloads\test.pdf"
+
+cd $LOCALDIR
+if [  ! $? -eq 0 ]; then
+    echo "$(date "+%d/%m/%Y-%T") Cant cd to $LOCALDIR. Please make sure this local directory is valid" >> $LOG
+fi
+
+ftp  $PROTOCOL://$URL <<- DOWNLOAD
+    user $USER "$PASS"
+    cd $REMOTEDIR
+    mget -E $REGEX
+DOWNLOAD
+
+if [ ! $? -eq 0 ]; then
+    echo "$(date "+%d/%m/%Y-%T") Cant download files. Make sure the credentials and server information are correct" >> $LOG
+fi

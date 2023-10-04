@@ -1,0 +1,6 @@
+/optexpva/va_fs/FADVDump/Test
+output.secret.key.user=rpacoefiles
+output.secret.key.password=QuwGDA3p8x
+output.secret.key.ip=b2b.fadv.com
+output.secret.key.port=11022
+cd $C:\Users\Krishnam\Downloads\test.pdf
